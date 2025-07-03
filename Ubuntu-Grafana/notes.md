@@ -17,7 +17,7 @@ git clone https://github.com/tommie0079/QuickRef.git
 ## Setup
 
 ```
-cd Quickref -> cd Ubuntu-Grafana
+cd QuickRef -> cd Ubuntu-Grafana
 ```
 
 ### docker compose 
