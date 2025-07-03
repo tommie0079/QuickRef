@@ -13,3 +13,20 @@ sudo apt install git-all
 ```
 git clone https://github.com/tommie0079/QuickRef.git
 ```
+
+## Setup
+
+```
+cd Quickref -> cd Ubuntu-Grafana
+```
+
+### docker compose 
+
+```
+docker compose up -d
+```
+
+### docker status 
+```
+docker ps
+```
