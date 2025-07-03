@@ -30,3 +30,21 @@ docker compose up -d
 ```
 docker ps
 ```
+
+## Webistes
+
+### Graphana 
+```
+http://localhost:3001
+```
+
+### blackbox 
+```
+http://localhost:9115
+```
+
+
+### prometheus 
+```
+http://localhost:9090
+```
