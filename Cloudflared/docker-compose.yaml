@@ -2,7 +2,8 @@ services:
   cloudflared:
     container_name: cloudflared
     image: cloudflare/cloudflared:latest #latest statick version or "latest" to run latest image
+    network_mode: host
     restart: unless-stopped
-    command: tunnel run
+    command: tunnel --protocol http2 run
     environment:
       - TUNNEL_TOKEN=${TOKEN}

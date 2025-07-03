@@ -12,6 +12,7 @@
 
 1. Click Zero trust -> Networks -> Tunnels
 2. Create tunnel -> Docker -> Get the token, its behind --token. Keep it save we are going to use it later. 
+3. Click next, select domain. Service: Type HTTP. URL: localhost:<port>, we are using port 3000.   
 
 
 ## 1. Install docker Ubuntu
@@ -57,3 +58,7 @@ docker ps
 ```
 
 
+## Troubleshooting
+```
+docker logs <Container name>
+```
