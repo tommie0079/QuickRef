@@ -22,3 +22,12 @@ docker compose up -d
 ```
 docker logs -f minecraft
 ```
+
+ ## See what is happening
+```
+sudo docker ps
+```
+ ## Stop
+```
+sudo docker stop minecraft
+```
