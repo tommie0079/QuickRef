@@ -8,4 +8,17 @@
 mkdir mc
 ```
 
- ## 3. 
+ ## 3. Create file
+```
+sudo nano docker-compose.yaml
+```
+
+ ## 4. Compose
+```
+docker compose up -d 
+```
+
+ ## 5. Start the server
+```
+docker logs -f minecraft
+```
