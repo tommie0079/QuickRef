@@ -1,15 +1,11 @@
 A fully functioning website hosted on Synology NAS, run true docker containers. 
+This website uses smtp mail function and mysql database.
 
 Management:
 ```
 phpMyAdmin   localhost:8080
 Website      localhost:5500
 ```
-
-
-
-This website uses smtp mail and mysql database.
-
 # 1. Folder setup:
 
 ```
