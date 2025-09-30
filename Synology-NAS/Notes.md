@@ -1,9 +1,10 @@
 A fully functioning website hosted on Synology NAS, run true docker containers. 
 
 Management:
+```
 phpMyAdmin   localhost:8080
 Website      localhost:5500
-
+```
 
 
 
