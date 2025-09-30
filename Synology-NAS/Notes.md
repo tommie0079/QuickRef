@@ -2,7 +2,7 @@ A fully functioning website hosted on Synology NAS, run true docker containers.
 
 This website uses smtp mail and mysql database.
 
-
+```
 myproject/
 ├── nginx/
 │   └── default.conf
@@ -14,3 +14,4 @@ myproject/
 │   └── phpmailer/   (manually downloaded PHPMailer)
 ├── compose.yml
 ├── db.env
+```
