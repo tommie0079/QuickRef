@@ -2,6 +2,8 @@ A fully functioning website hosted on Synology NAS, run true docker containers.
 
 This website uses smtp mail and mysql database.
 
+# A 1. Folder setup:
+
 ```
 myproject/
 ├── nginx/
@@ -15,3 +17,6 @@ myproject/
 ├── compose.yml
 ├── db.env
 ```
+
+# A 2 Modify www folder:
+chmod -R a+rX www
