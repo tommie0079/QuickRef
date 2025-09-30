@@ -21,8 +21,11 @@ myproject/
 ├── compose.yml
 ├── db.env
 ```
-
 # 2. Modify www folder:
+Run compose.yaml true Container Manager
+
+# 3. Modify www folder:
 chmod -R a+rX www
 
-# 3. Import mysql database
+## 4. Import mysql database
+## 5. Edit .env and db.env
