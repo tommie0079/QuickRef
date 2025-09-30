@@ -5,9 +5,12 @@ services:
     build:
       context: ./php
       dockerfile: Dockerfile
-    container_name: php-fpm
+    # container_name: php-fpm   # optional; container_name can be omitted for portability
     volumes:
       - ./www:/var/www/html:cached
+      - vendor_data:/var/www/html/vendor
+    env_file:
+      - .env
     networks:
       - appnet
 
@@ -39,7 +42,7 @@ services:
     image: phpmyadmin/phpmyadmin:latest
     container_name: phpmyadmin
     environment:
-      PMA_HOST: db          # must match the service name of MariaDB
+      PMA_HOST: db
       PMA_PORT: 3306
     ports:
       - "8080:80"
@@ -50,6 +53,7 @@ services:
 
 volumes:
   db_data:
+  vendor_data:
 
 networks:
   appnet:
