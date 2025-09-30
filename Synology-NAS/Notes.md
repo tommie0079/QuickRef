@@ -24,3 +24,5 @@ myproject/
 
 # 2. Modify www folder:
 chmod -R a+rX www
+
+# Import mysql database
