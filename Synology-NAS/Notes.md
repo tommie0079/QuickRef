@@ -27,7 +27,7 @@ myproject/
 │       ├── POP3.php
 │       ├── SMTP.php
 ├── .env (db)
-├──  docker-compose.yml
+├── docker-compose.yml
 ├── Dockerfile
 ```
 # 2. Modify www folder:
