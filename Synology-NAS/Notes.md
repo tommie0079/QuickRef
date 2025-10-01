@@ -31,7 +31,7 @@ myproject/
 ├── Dockerfile
 ```
 ## 2. Install Container Manager
-
+Do this true the offisial package center
 ## 3. Modify www folder: ?
 chmod -R a+rX www
 
