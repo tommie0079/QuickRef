@@ -1,5 +1,5 @@
-A fully functioning website hosted on Synology NAS, run true docker containers. 
-This website uses smtp mail function and mysql database.
+A fully functional website hosted on a Synology NAS, running in Docker containers. 
+The website integrates SMTP for email functionality and uses a MySQL database.
 
 Management:
 ```
