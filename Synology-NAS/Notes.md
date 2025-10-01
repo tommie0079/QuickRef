@@ -37,8 +37,5 @@ Do this true the offisial package center
 
 ## 4. Create new project and import docker-compose.yaml
 
-## 5. Modify www folder: ?
-chmod -R a+rX www
-
-## 6. Import mysql database
+## 5. Import mysql database
 
