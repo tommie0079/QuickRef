@@ -12,14 +12,24 @@ Website      localhost:5500
 myproject/
 ├── nginx/
 │   └── default.conf
-├── php/
-│   └── Dockerfile
 ├── www/
 │   ├── index.php
-│   ├── .env
+│   ├── db.php
+│   ├── loadEnv.php
+│   ├── mailer.php
+│   ├── test_smtp.php
+│   ├── .env (smtp + db)
 │   └── phpmailer/   (manually downloaded PHPMailer)
-├── compose.yml
-├── db.env
+│       └── DSNConfigurator.php
+│       ├── Exception.php
+│       ├── OAuth.php
+│       ├── OAuthTokenProvider.php
+│       ├── PHPMailer.php
+│       ├── POP3.php
+│       ├── SMTP.php
+├── .env (db)
+├──  docker-compose.yml
+├── Dockerfile
 ```
 # 2. Modify www folder:
 Run compose.yaml true Container Manager
