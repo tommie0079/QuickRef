@@ -6,7 +6,7 @@ Management:
 phpMyAdmin   localhost:8080
 Website      localhost:5500
 ```
-# 1. Folder setup:
+## 1. Folder setup:
 
 ```
 myproject/
@@ -30,11 +30,10 @@ myproject/
 ├── docker-compose.yml
 ├── Dockerfile
 ```
-# 2. Modify www folder:
-Run compose.yaml true Container Manager
+## 2. Install Container Manager
 
-# 3. Modify www folder:
+## 3. Modify www folder: ?
 chmod -R a+rX www
 
 ## 4. Import mysql database
-## 5. Edit .env and db.env
+## 5. Edit .env (db) and .env (smtp + db)
