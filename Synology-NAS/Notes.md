@@ -30,15 +30,15 @@ myproject/
 ├── docker-compose.yml
 ├── Dockerfile
 ```
-## 1. Edit .env (db) and .env (smtp + db)
+## 2. Edit .env (db) and .env (smtp + db)
 
-## 2. Install Container Manager
+## 3. Install Container Manager
 Do this true the offisial package center
 
-## 3. Create new project and import docker-compose.yaml
+## 4. Create new project and import docker-compose.yaml
 
-## 4. Modify www folder: ?
+## 5. Modify www folder: ?
 chmod -R a+rX www
 
-## 5. Import mysql database
+## 6. Import mysql database
 
