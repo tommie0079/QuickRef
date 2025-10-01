@@ -13,7 +13,6 @@ myproject/
 ├── nginx/
 │   └── default.conf
 ├── www/
-│   ├── index.php
 │   ├── db.php
 │   ├── loadEnv.php
 │   ├── mailer.php
