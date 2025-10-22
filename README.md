@@ -36,7 +36,7 @@ I occasionally post experiments, like my Power Automate + Home Automation workfl
 
 Feel free to fork, clone, or just lurk 👀
 
-##📫 Contact / Questions?
+## 📫 Contact / Questions?
 
 Open an issue, leave a star, or send me a message via rugplay.com
  if you have questions or just want to talk shop!
