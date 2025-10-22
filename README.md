@@ -30,7 +30,7 @@ My DNS is managed via Cloudflare, so I can map subdomains like grafana.rugplay.c
 
 Everything’s configured to be reliable, secure, and mostly cat-proof.
 
-##📦 Want to See More?
+## 📦 Want to See More?
 
 I occasionally post experiments, like my Power Automate + Home Automation workflows tied into rugplay.com. If you're into automation, dashboards, or just nerding out with home infrastructure, you're in the right place.
 
