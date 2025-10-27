@@ -1,4 +1,4 @@
-A simple but yet super effictive way to automate repeating tasks in a webbrowser. Here i just made a popup box so you can input a name, and then send it to the browser. 
+A simple but yet super effictive way to automate repeating tasks in a webbrowser. Here is a script that does the basics. At first there is a popup box so you can input a name, and then send it to the browser. Copy and paste it as much as you like.
 
 # The script
 
@@ -39,18 +39,18 @@ sendData(*) {
     Click(1258, 810)  ; Example: coordinates of a button, menu item, etc.
     Sleep(5500)      ; Wait for page or form to react
 
-    ; ✅ STEP 4: Copy the name into the field
+    ; ✅ STEP 2: Copy the name into the field
     SendInput(name)
 
 
-    ; ✅ STEP 5: write something into a form "write something"
+    ; ✅ STEP 3: write something into a form "write something"
     ; click to focus the field first
     Click(482, 697) ; 
     Sleep(2500)
     SendInput("example text")
     Sleep(2500)
 
-    ; ✅ STEP 6: click on something
+    ; ✅ STEP 4: click on something
     Click(767, 736)
     Sleep(1500)
 
