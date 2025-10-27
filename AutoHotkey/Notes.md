@@ -42,7 +42,6 @@ sendData(*) {
     ; ✅ STEP 2: Copy the name into the field
     SendInput(name)
 
-
     ; ✅ STEP 3: write something into a form "write something"
     ; click to focus the field first
     Click(482, 697) ; 
