@@ -1,0 +1,62 @@
+A simple but yet super effictive way to automate repeating tasks in a webbrowser. Here i just made a popup box so you can input a name, and then send it to the browser. 
+
+# The script
+
+; --- AutoHotkey v2 script ---
+
+g := Gui("+AlwaysOnTop", "Send Name to Website")
+g.AddText(, "Enter name:")
+nameInput := g.AddEdit("w200")
+sendBtn := g.AddButton("Default", "Send")
+sendBtn.OnEvent("Click", sendData)
+g.Show()
+
+sendData(*) {
+    global nameInput, g
+    name := nameInput.Value
+
+    if (name = "") {
+        MsgBox("Please enter a name first!")
+        return
+    }
+
+    g.Destroy()
+
+    edgePath := "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+    url := "https://example.com/"
+    Run('"' edgePath '" "' url '"')
+
+    ; Wait for Edge to open
+    WinWait("ahk_exe msedge.exe")
+    WinActivate("ahk_exe msedge.exe")
+    CoordMode("Mouse", "Window")
+
+    ; Wait for site to load
+    Sleep(2500)
+
+    ; ✅ STEP 1: Click on a field where the name should be added
+    Click(1258, 810)  ; Example: coordinates of a button, menu item, etc.
+    Sleep(5500)      ; Wait for page or form to react
+
+    ; ✅ STEP 4: Copy the name into the field
+    SendInput(name)
+
+
+    ; ✅ STEP 5: write something into a form "write something"
+    ; click to focus the field first
+    Click(482, 697) ; 
+    Sleep(2500)
+    SendInput("example text")
+    Sleep(2500)
+
+    ; ✅ STEP 6: click on something
+    Click(767, 736)
+    Sleep(1500)
+
+    MsgBox("Sent name: " . name)
+    ExitApp()
+}
+
+
+
+After that, you can convert the script to an executable! 
