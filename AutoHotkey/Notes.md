@@ -2,6 +2,7 @@ A simple but yet super effictive way to automate repeating tasks in a webbrowser
 
 # The script
 
+```
 ; --- AutoHotkey v2 script ---
 
 g := Gui("+AlwaysOnTop", "Send Name to Website")
@@ -57,6 +58,6 @@ sendData(*) {
     ExitApp()
 }
 
-
+```
 
 After that, you can convert the script to an executable!
