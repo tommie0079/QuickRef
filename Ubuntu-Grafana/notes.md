@@ -48,3 +48,6 @@ http://localhost:9115
 ```
 http://localhost:9090
 ```
+In Grafana, go to Dashboards > New > Import.
+
+Use these IDs: Enter 7107 or 12279. These are community-built dashboards specifically for Netdata.
