@@ -36,6 +36,7 @@ docker ps
 ### Graphana 
 ```
 http://localhost:3001
+admin - admin
 ```
 
 ### blackbox 
