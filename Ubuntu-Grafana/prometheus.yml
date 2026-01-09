@@ -1,3 +1,4 @@
+```
 global:
   scrape_interval: 15s
   evaluation_interval: 15s
@@ -24,3 +25,4 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: blackbox:9115
+        ```
