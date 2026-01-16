@@ -17,7 +17,7 @@ This guide explains how to protect your Cloudflare Tunnel with a **"Verify you a
 ### 1. Navigate to WAF Rules
 1.  Log in to the [Cloudflare Dashboard](https://dash.cloudflare.com/).
 2.  Select the **Domain** (Website) where your tunnel is hosted.
-3.  On the left sidebar, navigate to **Security** > **WAF**.
+3.  On the left sidebar, navigate to **Security** > **Security rules**.
 4.  Click on the **Custom rules** tab.
 5.  Click the blue **+ Create rule** button.
 
