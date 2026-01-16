@@ -19,6 +19,7 @@ This guide explains how to protect your Cloudflare Tunnel with a **"Verify you a
 2.  Select the **Domain** (Website) where your tunnel is hosted.
 3.  On the left sidebar, navigate to **Security** > **Security rules**.
 4.  Click the blue **+ Create rule** button.
+5.  Click **Custom rules**.
 
 ### 2. Configure the Rule
 Set up the rule to intercept traffic before it hits your tunnel. Use the following configuration:
