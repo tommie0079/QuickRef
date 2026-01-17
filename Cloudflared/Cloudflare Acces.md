@@ -8,3 +8,8 @@
 
 Cloudflare handles all authentication before traffic reaches your server — no additional containers needed.
 
+***********************************************************************************************************
+
+In Zero Trust → Settings → Authentication
+One-time PIN is enabled by default
+In your Access policy, set "Allow" for specific email addresses
