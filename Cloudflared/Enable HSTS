@@ -1,0 +1,21 @@
+Enable HSTS: ✅ Yes
+
+Max Age Header:
+
+Start with: 6 months (15768000 seconds)
+After testing for a few weeks, increase to 12 months (31536000)
+This gives you a safety window if something breaks
+Apply HSTS to subdomains (includeSubDomains):
+
+Only enable if ALL your subdomains use HTTPS
+Do you have subdomains like www, admin, api, etc.?
+If yes and they all work on HTTPS → ✅ Enable
+If no subdomains or unsure → ❌ Leave disabled for now
+Preload:
+
+❌ Leave DISABLED for now
+Preload is extremely permanent (hard to undo)
+You can enable this later after HSTS runs smoothly for months
+No-Sniff Header:
+
+✅ Enable (you already have this in your code, so it's safe)
