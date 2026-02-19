@@ -96,7 +96,10 @@ scp root@192.168.1.x:/tmp/vm103.vv C:\Users\you\vm103.vv
 
 **Step 3 — Open it with virt-viewer on your local machine:**
 - Linux/Mac: `remote-viewer ~/vm103.vv`
-- Windows: Download **virt-viewer for Windows** from https://virt-manager.org/download then double-click the `.vv` file
+- Windows: Install **virt-viewer for Windows**, then double-click the `.vv` file
+  - [Win x64 MSI (v11.0)](https://gitlab.com/virt-viewer/virt-viewer/-/releases/v11.0/downloads/virt-viewer-x64-11.0-1.0.msi) — direct download
+  - [Win x86 MSI (v11.0)](https://gitlab.com/virt-viewer/virt-viewer/-/releases/v11.0/downloads/virt-viewer-x86-11.0-1.0.msi) — for 32-bit systems
+  - Or via winget: `winget install --id RedHat.VirtViewer`
 
 The window will auto-resize the VM display to match your client window.
 
