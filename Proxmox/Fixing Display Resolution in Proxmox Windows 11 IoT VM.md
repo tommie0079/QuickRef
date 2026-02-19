@@ -102,6 +102,16 @@ pnputil /scan-devices
 
 > The folder and filename may vary — use whatever path the search returned, not the example above.
 
+**Common mistake — "Failed to add driver package: Missing or invalid driver package":**
+This happens if you copy the placeholder path `...\qxldod.inf` from the docs literally.
+Use the exact path printed by the `Get-ChildItem` search above instead.
+
+After installing, reboot and verify the driver loaded:
+```powershell
+Get-PnpDevice | Where-Object { $_.Class -eq 'Display' } | Select-Object Status, FriendlyName
+```
+Expected: **VirtIO GPU DOD** with status **OK**. The resolution slider in Display Settings will now work.
+
 Reboot and check Step 1 again.
 
 ---
