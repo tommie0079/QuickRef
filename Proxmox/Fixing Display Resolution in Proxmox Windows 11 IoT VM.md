@@ -74,18 +74,34 @@ resolution will be set automatically and the slider in Display Settings will ref
 If you connect to the VM using **virt-viewer** (the SPICE client) instead of the
 Proxmox web console, the display resolution automatically matches your client window size.
 
-On the Proxmox host or any machine on the same network:
-```bash
-# Install virt-viewer
-apt install virt-viewer       # Debian/Ubuntu
-# or download from: https://virt-manager.org/download
+> **Important:** `remote-viewer` must be run on your **local PC/laptop** — not on the
+> Proxmox host, which has no display.
 
-# Connect to the VM (replace 192.168.1.x with your Proxmox host IP and 103 with VM ID)
-remote-viewer spice://192.168.1.x?port=$(pvesh get /nodes/$(hostname)/qemu/103/spiceproxy --output-format json | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['port'])")
+**Step 1 — On the Proxmox host**, generate a `.vv` connection file:
+```bash
+pvesh create /nodes/$(hostname)/qemu/103/spiceproxy --proxy 192.168.1.x > /tmp/vm103.vv
+cat /tmp/vm103.vv
+```
+Replace `192.168.1.x` with your Proxmox host IP.
+
+**Step 2 — Copy the `.vv` file to your local machine:**
+```bash
+# Run this on your local Linux/Mac machine
+scp root@192.168.1.x:/tmp/vm103.vv ~/vm103.vv
+```
+On Windows, use WinSCP or:
+```powershell
+scp root@192.168.1.x:/tmp/vm103.vv C:\Users\you\vm103.vv
 ```
 
-Or more simply — in the **Proxmox web UI**, click **Console** → the resolution will
-auto-follow the browser window if the SPICE agent is installed.
+**Step 3 — Open it with virt-viewer on your local machine:**
+- Linux/Mac: `remote-viewer ~/vm103.vv`
+- Windows: Download **virt-viewer for Windows** from https://virt-manager.org/download then double-click the `.vv` file
+
+The window will auto-resize the VM display to match your client window.
+
+> **Simpler alternative:** In the Proxmox web UI, click **Console** → the built-in
+> noVNC/SPICE console auto-resizes if the SPICE agent is installed in the VM.
 
 ---
 
