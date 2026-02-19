@@ -94,12 +94,13 @@ Get-ChildItem "C:\Program Files\Virtio-Win\" -Recurse -Filter "*.inf" |
     Where-Object { $_.Name -like '*qxl*' -or $_.Name -like '*viogpu*' }
 ```
 
-Then install using the path returned above:
+Then install using the exact path returned above. For example:
 ```powershell
-# Replace the path with what the command above returned
-pnputil /add-driver "C:\Program Files\Virtio-Win\...\qxldod.inf" /install /force
+pnputil /add-driver "C:\Program Files\Virtio-Win\Viogpudo\viogpudo.inf" /install /force
 pnputil /scan-devices
 ```
+
+> The folder and filename may vary — use whatever path the search returned, not the example above.
 
 Reboot and check Step 1 again.
 
