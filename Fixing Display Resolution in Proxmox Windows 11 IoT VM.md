@@ -11,8 +11,9 @@ does not pass through a real GPU by default.
 
 In the Proxmox web UI:
 1. Select the VM → **Hardware** → **Display**
-2. Change Graphic card from `Default` to **SPICE**
-3. Also add **VirtIO Serial Port** (required by the guest agent)
+2. Change Graphic card from `Default` to **SPICE** → click OK
+3. Still in **Hardware** → click **Add** → **Serial Port**
+   - Port number: `0` → click Add
 4. Reboot the VM
 
 Then inside the VM, install the guest tools:
