@@ -167,3 +167,63 @@ Stop-Process -Name explorer -Force
 
 It writes the desired resolution directly into the VirtIO GPU driver key and takes
 effect after a reboot, bypassing the Settings UI entirely.
+
+---
+
+## Troubleshoot — `pvesh spiceproxy` returns "no spice port"
+
+### Cause 1 — Display is not set to SPICE
+
+The `spiceproxy` endpoint only exists when the VM's graphic card is set to **SPICE (QXL)**.
+
+Verify:
+```bash
+grep -E 'vga|spice' /etc/pve/qemu-server/103.conf
+```
+
+- Expected: `vga: qxl`
+- If it shows `vga: virtio`, `vga: std`, or is missing → set it:
+
+```bash
+qm set 103 --vga qxl
+qm set 103 --serial0 socket
+qm stop 103 && qm start 103
+```
+
+> **Note:** Serial port 0 (`serial0: socket`) is required for SPICE to function. Without it,
+> the SPICE port will not be allocated even if `vga: qxl` is set.
+
+---
+
+### Cause 2 — VM was rebooted instead of stopped/started
+
+SPICE port allocation happens when **Proxmox launches the QEMU process**, not when the
+guest OS reboots. If you changed the display type and then did a guest reboot (via Windows
+Start menu or `qm reboot`), the SPICE port is not allocated.
+
+Fix — do a full stop/start from the Proxmox host:
+```bash
+qm stop 103 && qm start 103
+```
+
+Then retry:
+```bash
+pvesh create /nodes/$(hostname)/qemu/103/spiceproxy --proxy 192.168.1.157 > /tmp/vm103.vv
+cat /tmp/vm103.vv
+```
+
+---
+
+### Verify serial port is present
+
+```bash
+grep serial /etc/pve/qemu-server/103.conf
+```
+
+Expected output: `serial0: socket`
+
+If missing:
+```bash
+qm set 103 --serial0 socket
+qm stop 103 && qm start 103
+```
