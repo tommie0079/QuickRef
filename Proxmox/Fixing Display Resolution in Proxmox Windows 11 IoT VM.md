@@ -38,36 +38,54 @@ it includes the VirtIO GPU driver.
 
 ---
 
-## Fix 3 — Force resolution via PowerShell (temporary, no driver needed)
+## Fix 3 — Inject custom resolution into VirtIO GPU registry
+
+VirtIO GPU DOD ignores `ChangeDisplaySettings` — you must write the desired resolution
+directly into the driver's registry key, then reboot.
+
+Run in PowerShell **as Administrator**:
 
 ```powershell
-$code = @"
-using System;
-using System.Runtime.InteropServices;
-public class Display {
-    [DllImport("user32.dll")] public static extern int ChangeDisplaySettings(ref DEVMODE dm, int flags);
-    [StructLayout(LayoutKind.Sequential)] public struct DEVMODE {
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst=32)] public string dmDeviceName;
-        public short dmSpecVersion, dmDriverVersion, dmSize, dmDriverExtra;
-        public int dmFields;
-        public int dmPositionX, dmPositionY, dmDisplayOrientation, dmDisplayFixedOutput;
-        public short dmColor, dmDuplex, dmYResolution, dmTTOption, dmCollate;
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst=32)] public string dmFormName;
-        public short dmLogPixels; public int dmBitsPerPel, dmPelsWidth, dmPelsHeight, dmDisplayFlags, dmDisplayFrequency;
+# Find the VirtIO / Red Hat display driver registry key
+$driverKey = Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\*" `
+    -ErrorAction SilentlyContinue |
+    Where-Object { $_.DriverDesc -like '*VirtIO*' -or $_.DriverDesc -like '*Red Hat*' -or $_.DriverDesc -like '*viogpu*' }
+
+if (-not $driverKey) {
+    Write-Host "VirtIO GPU driver key not found. Is the driver installed?" -ForegroundColor Red
+} else {
+    $driverKey | ForEach-Object {
+        Write-Host "Setting custom resolution on: $($_.PSPath)"
+        Set-ItemProperty -Path $_.PSPath -Name "CustomXRes" -Value 1920 -Type DWord
+        Set-ItemProperty -Path $_.PSPath -Name "CustomYRes" -Value 1080 -Type DWord
+        Set-ItemProperty -Path $_.PSPath -Name "CustomBPP"  -Value 32   -Type DWord
     }
-    public static void Set(int w, int h) {
-        var dm = new DEVMODE(); dm.dmSize = (short)Marshal.SizeOf(dm);
-        dm.dmPelsWidth = w; dm.dmPelsHeight = h; dm.dmFields = 0x80000 | 0x100000;
-        ChangeDisplaySettings(ref dm, 0);
-    }
+    Write-Host "Done. Reboot the VM to apply." -ForegroundColor Green
 }
-"@
-Add-Type $code
-[Display]::Set(1920, 1080)
 ```
 
-> This only works if the current driver supports the target resolution.
-> Fixes 1 or 2 are the proper long-term solution.
+Change `1920` / `1080` to your desired resolution, then **reboot**. After reboot the
+resolution will be set automatically and the slider in Display Settings will reflect it.
+
+---
+
+## Fix 4 — Use SPICE client auto-resize (no configuration needed)
+
+If you connect to the VM using **virt-viewer** (the SPICE client) instead of the
+Proxmox web console, the display resolution automatically matches your client window size.
+
+On the Proxmox host or any machine on the same network:
+```bash
+# Install virt-viewer
+apt install virt-viewer       # Debian/Ubuntu
+# or download from: https://virt-manager.org/download
+
+# Connect to the VM (replace 192.168.1.x with your Proxmox host IP and 103 with VM ID)
+remote-viewer spice://192.168.1.x?port=$(pvesh get /nodes/$(hostname)/qemu/103/spiceproxy --output-format json | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['port'])")
+```
+
+Or more simply — in the **Proxmox web UI**, click **Console** → the resolution will
+auto-follow the browser window if the SPICE agent is installed.
 
 ---
 
@@ -126,7 +144,7 @@ Stop-Process -Name explorer -Force
 
 ---
 
-**Step 4 — If nothing works, set resolution directly via PowerShell (Fix 3 above).**
+**Step 4 — If nothing works, inject the resolution via registry (Fix 3 above).**
 
-It bypasses the Settings UI entirely and sets the resolution via the Windows API,
-regardless of any policy restrictions.
+It writes the desired resolution directly into the VirtIO GPU driver key and takes
+effect after a reboot, bypassing the Settings UI entirely.
