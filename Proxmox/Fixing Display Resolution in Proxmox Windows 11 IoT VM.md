@@ -68,3 +68,54 @@ Add-Type $code
 
 > This only works if the current driver supports the target resolution.
 > Fixes 1 or 2 are the proper long-term solution.
+
+---
+
+## Troubleshoot
+
+### Resolution still greyed out after installing guest tools
+
+**Step 1 — Check what display adapter Windows is actually using:**
+
+```powershell
+Get-PnpDevice | Where-Object { $_.Class -eq 'Display' } | Select-Object Status, FriendlyName
+```
+
+- If it shows **"Standard VGA"** or **"Microsoft Basic Display Adapter"** → the driver did not install. Continue to Step 2.
+- If it shows **QXL** or **VirtIO GPU** → the driver is installed but Settings is locked by policy. Skip to Step 3.
+
+---
+
+**Step 2 — Force-install the display driver manually:**
+
+```powershell
+# Find the driver INF file from the guest tools installation
+Get-ChildItem "C:\Program Files\Virtio-Win\" -Recurse -Filter "*.inf" |
+    Where-Object { $_.Name -like '*qxl*' -or $_.Name -like '*viogpu*' }
+```
+
+Then install using the path returned above:
+```powershell
+# Replace the path with what the command above returned
+pnputil /add-driver "C:\Program Files\Virtio-Win\...\qxldod.inf" /install /force
+pnputil /scan-devices
+```
+
+Reboot and check Step 1 again.
+
+---
+
+**Step 3 — Remove policy lock on display settings (Windows IoT restriction):**
+
+```powershell
+reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "DisplayCP" /f 2>$null
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v "NoDispCPL" /f 2>$null
+Stop-Process -Name explorer -Force
+```
+
+---
+
+**Step 4 — If nothing works, set resolution directly via PowerShell (Fix 3 above).**
+
+It bypasses the Settings UI entirely and sets the resolution via the Windows API,
+regardless of any policy restrictions.
