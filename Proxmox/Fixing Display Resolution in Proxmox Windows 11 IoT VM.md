@@ -71,6 +71,10 @@ resolution will be set automatically and the slider in Display Settings will ref
 
 ## Fix 4 — Use SPICE client auto-resize (no configuration needed)
 
+> **Restriction:** This fix requires installing **virt-viewer** on your local PC.
+> If software installation is not permitted (e.g. corporate/managed environment),
+> skip this fix and use **Fix 3** (registry injection) instead.
+
 If you connect to the VM using **virt-viewer** (the SPICE client) instead of the
 Proxmox web console, the display resolution automatically matches your client window size.
 
@@ -227,3 +231,36 @@ If missing:
 qm set 103 --serial0 socket
 qm stop 103 && qm start 103
 ```
+
+---
+
+## Reverting from SPICE back to VirtIO-GPU
+
+If you configured SPICE (`vga: qxl`) but cannot install virt-viewer (e.g. corporate
+environment), revert to VirtIO-GPU and use the registry injection method (Fix 3) instead.
+
+**On the Proxmox host:**
+```bash
+qm set 103 --vga virtio
+qm stop 103 && qm start 103
+```
+
+The serial port can be left in place or removed:
+```bash
+# Optional — remove the serial port if you no longer want it
+qm set 103 --delete serial0
+qm stop 103 && qm start 103
+```
+
+Verify the config:
+```bash
+grep vga /etc/pve/qemu-server/103.conf
+# Expected: vga: virtio
+```
+
+**Then inside the VM**, use **Fix 3** (registry injection) to set the resolution:
+- Install the virtio-win guest tools if not already done
+- Run the PowerShell registry script from Fix 3
+- Reboot the VM
+
+This sets the desired resolution directly and does not require any additional client software.
