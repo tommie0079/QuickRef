@@ -1,5 +1,0 @@
-groups:
-- name: smoke
-  rules:
-  - record: vector_test
-    expr: vector(1)
