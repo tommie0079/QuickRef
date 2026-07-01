@@ -19,35 +19,12 @@ git clone https://github.com/user/repository.git
 cd repository
 ```
 
-## Check Status
+## Open in Visual Studio
 
 ```bash
-git status
+code .
 ```
 
-## Add Files
-
-Add all changed files:
-```bash
-git add .
-```
-
-Add a specific file:
-```bash
-git add filename.txt
-```
-
-## Commit Changes
-
-```bash
-git commit -m "Describe your changes"
-```
-
-## Push to GitHub
-
-```bash
-git push
-```
 
 ## Pull Latest Changes
 
@@ -63,13 +40,4 @@ git config --global user.email "you@example.com"
 ```
 
 
-Most common workflow:
 
-git clone <repo-url>
-cd <repo>
-
-# Make changes
-
-git add .
-git commit -m "Updated files"
-git push
