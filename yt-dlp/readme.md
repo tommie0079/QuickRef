@@ -7,19 +7,6 @@ winget install DenoLand.Deno
 winget install yt-dlp
 ```
 
-> **`winget` not recognized?** Install/update **App Installer** from the Microsoft Store, then open a new terminal. Or run:
->
-> ```powershell
-> Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
-> ```
-
- Try repair installer
-
-  ```cmd
- DISM /Online /Cleanup-Image /RestoreHealth
-sfc /scannow
- ```
-
 ## Update
 
 ```powershell
