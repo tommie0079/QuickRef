@@ -9,16 +9,15 @@ winget install yt-dlp
 
 Close and open cmd in the same location
 
-## Update
-
-```powershell
-yt-dlp.exe -U
-```
-
-Update every 30 / 60 min if needed.
-
 ## Download (best video + audio, recode to MP4)
 
 ```powershell
 yt-dlp.exe -f "bv*+ba/b" --recode-video mp4 --postprocessor-args "VideoConvertor:-c:v libx264 -crf 18 -c:a aac" "https://www.youtube.com/watch?v=kBUiyiUQm5o"
+```
+A download can take up to 30 / 60 min.
+
+## Update
+
+```powershell
+yt-dlp.exe -U
 ```
