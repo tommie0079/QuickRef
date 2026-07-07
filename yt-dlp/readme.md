@@ -12,6 +12,13 @@ winget install yt-dlp
 > ```powershell
 > Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
 > ```
+>
+> Try repair installer
+>
+> > ```cmd
+> DISM /Online /Cleanup-Image /RestoreHealth
+sfc /scannow
+> ```
 
 ## Update
 
