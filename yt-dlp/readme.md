@@ -15,7 +15,7 @@ winget install yt-dlp
 >
 > Try repair installer
 >
-> > ```cmd
+>  ```cmd
 > DISM /Online /Cleanup-Image /RestoreHealth
 sfc /scannow
 > ```
