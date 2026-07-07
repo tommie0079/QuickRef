@@ -7,6 +7,8 @@ winget install DenoLand.Deno
 winget install yt-dlp
 ```
 
+Close and open cmd in the same location
+
 ## Update
 
 ```powershell
