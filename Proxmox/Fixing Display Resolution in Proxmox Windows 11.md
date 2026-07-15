@@ -27,3 +27,20 @@ Fix for: clicking the SPICE console downloads `pve-spice.vv` instead of opening 
 
 - Set **Display = Default (noVNC)** to run the console in‑browser (no extra software,
   fewer features than SPICE).
+
+## Can't install a SPICE client? Fix resolution without it
+
+**Option A – RDP (best, no install, native resolution)**
+1. In the Windows guest: **Settings → System → Remote Desktop → On**.
+2. Note the VM's IP (`ipconfig` in the guest).
+3. On your PC run the built‑in client: `mstsc` → enter the VM IP → connect.
+   - RDP auto‑matches your window/monitor size and resizes dynamically.
+   - Requires network reachability to the VM and Windows Pro/Enterprise in the guest.
+
+**Option B – Browser console (noVNC), no install**
+1. VM → **Hardware → Display → Default (std)** (or **VirtIO-GPU**).
+2. Open **Console** (noVNC) in the browser.
+3. In the guest: **Settings → Display** → pick the resolution you want.
+4. For more/auto resolutions, install the guest GPU driver from the **virtio-win** ISO
+   *inside the VM* (done on the VM, not your locked‑down PC).
+5. noVNC toolbar has a **scaling** option (Local scaling / full‑screen) to fit your screen.
