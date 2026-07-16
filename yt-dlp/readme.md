@@ -10,6 +10,7 @@ winget install yt-dlp
 OR
 
 https://docs.deno.com/runtime/getting_started/installation/
+
 https://github.com/yt-dlp/yt-dlp/releases?
 
 Close and open cmd in the same location
