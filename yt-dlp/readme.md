@@ -7,6 +7,11 @@ winget install DenoLand.Deno
 winget install yt-dlp
 ```
 
+OR
+
+https://docs.deno.com/runtime/getting_started/installation/
+https://github.com/yt-dlp/yt-dlp/releases?
+
 Close and open cmd in the same location
 
 ## Download (best video + audio, recode to MP4)
