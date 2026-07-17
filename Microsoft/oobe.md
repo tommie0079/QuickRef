@@ -1,16 +1,16 @@
-#Skip oobe
+# Skip oobe
 ```
 net.exe user Windows VLFK_admin123 /add
 ```
-###ENTER
+### ENTER
 ```
 net.exe localgroup administrators Windows /add
 ```
-###ENTER
+### ENTER
 ```
 cd oobe
 ```
-###ENTER
+### ENTER
 ```
 msoobe.exe && shutdown.exe /r
 ```
