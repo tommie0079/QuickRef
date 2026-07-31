@@ -7,3 +7,4 @@ services:
       - "8081:8081"
     volumes:
       - /srv/samba/share:/downloads
+## OR C:\Users\User\Desktop\metube
