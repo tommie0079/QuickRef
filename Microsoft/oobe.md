@@ -1,6 +1,6 @@
 # Skip oobe
 ```
-net.exe user Windows VLFK_admin123 /add
+net.exe user Windows WIN_admin123 /add
 ```
 ### ENTER
 ```
