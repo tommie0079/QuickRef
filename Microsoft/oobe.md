@@ -17,7 +17,10 @@ msoobe.exe && shutdown.exe /r
 ## ENTER
 
 
-# Go back to oobe
+# Audit mode
 ```
-net user Windows /delete && cd /d %windir%\system32\oobe && msoobe.exe
+Ctrl + shift + f3
+OR
+C:\Windows\System32\Sysprep\Sysprep.exe /audit /reboot
+
 ```
