@@ -19,6 +19,5 @@ msoobe.exe && shutdown.exe /r
 
 # Go back to oobe
 ```
-cd /d %windir%\system32\oobe
-msoobe.exe
+net user Windows /delete && shutdown /r /o /t 0
 ```
