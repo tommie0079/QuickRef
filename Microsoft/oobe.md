@@ -2,19 +2,19 @@
 ```
 net.exe user Windows WIN_admin123 /add
 ```
-### ENTER
+## ENTER
 ```
 net.exe localgroup administrators Windows /add
 ```
-### ENTER
+## ENTER
 ```
 cd oobe
 ```
-### ENTER
+## ENTER
 ```
 msoobe.exe && shutdown.exe /r
 ```
-### ENTER
+## ENTER
 
 
 # Go back to oobe
