@@ -14,3 +14,11 @@ cd oobe
 ```
 msoobe.exe && shutdown.exe /r
 ```
+### ENTER
+
+
+# Go back to oobe
+```
+cd /d %windir%\system32\oobe
+msoobe.exe
+```
