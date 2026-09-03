@@ -6,3 +6,4 @@ shutdown /r /o /f /t 0 (advanced)
 
 sysprep /audit /reboot (audit mode)
 
+sutdown.exe /h (hybernate)
