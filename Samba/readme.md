@@ -2,9 +2,10 @@
 ```
 sudo apt update
 sudo apt install samba ufw -y
-sudo systemctl enable --now smbd
+sudo ufw allow ssh
 sudo ufw allow 'Samba'
 sudo ufw enable
+sudo systemctl enable --now smbd
 ```
 
 ## Create Share Directory & Set Password
