@@ -28,3 +28,6 @@ EOT
 ```
 sudo systemctl restart smbd
 ```
+
+## Navigate
+cd /home/your_username/shared_folder
