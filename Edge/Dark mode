@@ -1,2 +1,8 @@
-Edge Appearance Settings: edge://settings/appearance   
-Edge Dark Mode Flags: edge://flags/#enable-force-dark
+Edge Appearance Settings:   edge://settings/appearance   
+Edge Dark Mode Flags:       edge://flags/#enable-force-dark
+
+Reset.bat
+
+@echo off
+start "" "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --user-data-dir="%LOCALAPPDATA%\EdgeTestProfile" --no-first-run edge://flags/#enable-force-dark edge://settings/appearance
+
